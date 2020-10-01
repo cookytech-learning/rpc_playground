@@ -1,8 +1,11 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
 library server;
 
-export 'src/server_base.dart';
+import 'package:grpc/grpc.dart' as grpc;
 
-// TODO: Export any libraries intended for clients of this package.
+class Server {
+  Future<void> main(List<String> args) async {
+    final server = grpc.Server([]);
+    await server.serve(port: 8080);
+    print('Server Listening at ${ server.port}');
+  }
+}
