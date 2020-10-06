@@ -1,1 +1,2 @@
-const RPC_BASE_ADDRESS = String.fromEnvironment('RPC_BASE_ADDRESS');
+const RPC_HOST = String.fromEnvironment('RPC_HOST');
+const RPC_PORT = int.fromEnvironment('RPC_PORT');
