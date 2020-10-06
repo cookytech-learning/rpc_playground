@@ -27,7 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
   ClientChannel channel;
   HelloClient stub;
   initialize() async {
-    channel = ClientChannel(RPC_HOST, port: RPC_PORT);
+    channel = ClientChannel(RPC_HOST,
+        port: RPC_PORT,
+        options:
+            const ChannelOptions(credentials: ChannelCredentials.insecure()));
     stub = HelloClient(channel);
   }
 
@@ -45,11 +48,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   sayHello() async {
-    print("Say Hello");
-    final Message result = await stub.sayHello(Name()..name = "Raveesh");
-    _text = result.message;
-    print(_text);
-    setState(() {});
+    try {
+      print("Say Hello ${channel.host}:${channel.port}");
+      final Message result = await stub.sayHello(Name()..name = "Raveesh");
+      _text = result.message;
+      print(_text);
+      setState(() {});
+    } catch (r) {
+      print(r);
+    }
   }
 
   @override

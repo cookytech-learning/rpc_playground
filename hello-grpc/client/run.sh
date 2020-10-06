@@ -1,2 +1,2 @@
 #!/bin/bash
-flutter run -d chrome --dart-define RPC_HOST="0.0.0.0" --dart-define RPC_PORT=8085
+flutter run -d 58H3Y18831036438 --dart-define RPC_HOST="192.168.1.9" --dart-define RPC_PORT=8085
